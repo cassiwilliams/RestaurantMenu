@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 
 namespace RestaurantMenu
@@ -15,6 +16,21 @@ namespace RestaurantMenu
         {
             MenuItems = item;
             MenuDateTime = updateDate;
+        }
+        public static void AddItem(MenuItem newItem, Menu menu)
+        {
+            menu.MenuItems.Add(newItem);
+        }
+        public static void RemoveItem(MenuItem menuItem, Menu menu)
+        {
+            menu.MenuItems.Remove(menuItem);
+        }
+        public static void DisplayMenu(Menu menu)
+        {
+            for (int i = 0; i < menu.MenuItems.Count; i++) {
+                MenuItem.DisplayItem(menu.MenuItems[i]);                
+            }
+            Console.WriteLine(menu.MenuItems.Count);
         }
     }
 }
